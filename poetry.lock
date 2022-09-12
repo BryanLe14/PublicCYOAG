@@ -125,6 +125,14 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "getkey"
+version = "0.6.5"
+description = "Read single characters and key-strokes"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "idna"
 version = "3.3"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -477,7 +485,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8.0,<3.9"
-content-hash = "4ceda468c6ce7d0b641f0c244f742d3a912100cd87f29fbe250fdc0a2528f740"
+content-hash = "e853a4a9daf028aa41eac13c87b4ea24f1c20dc3d6348016ff3f9e967fbb594f"
 
 [metadata.files]
 aiohttp = []
@@ -491,6 +499,7 @@ colorama = []
 debugpy = []
 flask = []
 frozenlist = []
+getkey = []
 idna = []
 importlib-metadata = []
 itsdangerous = []

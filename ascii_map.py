@@ -171,7 +171,7 @@ https://www.w3.org/TR/xml-entity-names/025.html
 import math
 import time
 from universal_globals import *
-from getkey import getkey, keys
+import getkey
 
 ascii_map = []
 
@@ -257,8 +257,8 @@ def main():
 
 
 while True:
-    key = getKey()
-    if key == keys.RIGHT:
+    key = getkey.getkey()
+    if key == getkey.keys.RIGHT:
         x += 1
     main()
     time.sleep(0.5)
