@@ -221,6 +221,8 @@ x = 0
 y = 0
 
 def ascii_map_main():
+    global x, y
+    
     clear_screen()
         
     formatted_map_str = ""
@@ -238,6 +240,9 @@ def ascii_map_main():
     print(formatted_map_str.strip())
     
     key = get_key()
+    if key == 'right':
+        x += 1
+    
 ascii_map_main()
 
 while True:
