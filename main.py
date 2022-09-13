@@ -27,8 +27,8 @@ def main() -> None:
     experiment = entities.Experimental_Entity(name="Experiment")
 
 
-import ascii_map
-
 if __name__ == "__main__":
     """ This is excecuted when the file is run from the command line """
     main()
+
+import ascii_map
