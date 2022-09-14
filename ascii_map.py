@@ -186,10 +186,11 @@ for y in range(height-1):
 # print("".join(ascii_map))
 
 block_size = 2
+player_char = "@"
 
 ascii_graphics_data = {
-    '&': ['&' * block_size for i in range(block_size)],
-    '#': ['#' * block_size for i in range(block_size)],
+    '&': ['&&' * block_size for i in range(block_size)],
+    '#': ['##' * block_size for i in range(block_size)],
     '.': ['.' * block_size for i in range(block_size)],
 }
 
@@ -230,18 +231,25 @@ def ascii_map_main():
         formatted_map_str += "▓" * width + "\n"
     for y_count, y_value in enumerate(formatted_map_list):
         for i in range(x - math.floor(width2), -1):
-            if y_count >= y and y_count < height2 + y:
+            if y_count >= y - height2 and y_count < y + height2 - 4:
                 formatted_map_str += "▓"
         for x_count, x_value in enumerate(y_value):
-            if x_count > x - width2 and x_count < x + width2 and y_count > y - height2 and y_count < y + height2:
-                formatted_map_str += x_value
+            if x_count*2 > x - width2 and x_count*2 < x + width2 and y_count > y - height2 and y_count < y + height2 - 4:
+                char_to_add = x_value if len(x_value) == 2 else x_value + " "
+                formatted_map_str += (player_char+" ") if (x_count == x and y_count == y) else (char_to_add)
         formatted_map_str += "\n"
     
     print(formatted_map_str.strip())
     
     key = get_key()
-    if key == 'right':
+    if key == 'left':
+        x -= 1
+    elif key == 'right':
         x += 1
+    elif key == 'up':
+        y -= 1
+    elif key == 'down':
+        y += 1
     
 ascii_map_main()
 
