@@ -22,13 +22,16 @@ __version__ = "0.1"
 import os
 import entities
 from universal_globals import *
+import console
+
 
 def main() -> None:
+    console.clear()
     experiment = entities.Experimental_Entity(name="Experiment")
+    import ascii_map
 
 
 if __name__ == "__main__":
     """ This is excecuted when the file is run from the command line """
     main()
 
-import ascii_map

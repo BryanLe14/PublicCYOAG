@@ -168,12 +168,12 @@ https://www.w3.org/TR/xml-entity-names/025.html
 ╿
 """
 
-import math
-import time
+import math, time
 
 from universal_globals import (width, height, width2, height2, floorwidth2, floorheight2, clear_screen, constrain)
 import getkey
 from getkey import get_key
+import console
 
 ascii_map = []
 
@@ -246,13 +246,17 @@ def ascii_map_main():
         # Actual stuff
         for x_count, x_value in enumerate(y_value):
             if x_count*2 > x - width2 and x_count*2 < x + width2 and y_count > y - height2 and y_count < y + height2 - 4:
+                # if character is two characters long, leave it. else, add a space
                 char_to_add = x_value if len(x_value) == 2 else x_value + " "
+                # if character position is the player's position, replace it
                 formatted_map_str += (player_char+" ") if (x_count*2 == x and y_count == y) else (char_to_add)
         # Whitespace right
-        for i in range(map_data["width"]*2, x + math.floor(width2)+1):
-            if y_count >= y - height2 and y_count < y + height2 - 4 and x > map_data["width"] / 2:
-                formatted_map_str += (("▓") if (i == map_data["width"]+2) else (" "))
-        formatted_map_str = formatted_map_str[:-1]
+        # for i in range(map_data["width"]*2, x + math.floor(width2)+1):
+        #     if y_count >= y - height2 and y_count < y + height2 - 4 and x > map_data["width"] / 2:
+        #         formatted_map_str += (("▓") if (i == map_data["width"]+2) else (" "))
+        if x > map_data["width"] * 2 - floorwidth2:
+            formatted_map_str += "▓ "
+        formatted_map_str = formatted_map_str[:-2]
         formatted_map_str += "\n"
     # Whitespace bottom
     for i in range(map_data["height"]+1, y + math.floor(height2) - 4):
@@ -262,17 +266,21 @@ def ascii_map_main():
     with open('levels/currMap.txt', "w") as f:
         f.write(formatted_map_str)
     
-    print(get_char_on_map(x, y))
+    print("HP: 100\nATK: 10")
     
     key = get_key()
     if key == 'left' and not char_is_wall(get_char_on_map(math.floor(x/2)-1, y)):
         x -= 2
+        console.log("Player moved left")
     elif key == 'right' and not char_is_wall(get_char_on_map(math.floor(x/2)+1, y)):
         x += 2
+        console.log("Player moved right")
     elif key == 'up' and not char_is_wall(get_char_on_map(math.floor(x/2), y-1)):
         y -= 1
+        console.log("Player moved up")
     elif key == 'down' and not char_is_wall(get_char_on_map(math.floor(x/2), y+1)):
         y += 1
+        console.log("Player moved down")
     # x = constrain(x, 0, (map_data["width"] * 2) - 2)
     # y = constrain(y, 0, map_data["height"] - 1)
     
