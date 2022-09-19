@@ -222,7 +222,7 @@ y = 0
 def char_is_wall(char):
     return (char == "#" or char == "▓")
 def is_wall(x_pos, y_pos):
-    is_in_bounds = x_pos >= 0 and x_pos < map_data["width"]-1 and y_pos >= 0 and y_pos < map_data["height"]
+    is_in_bounds = x_pos >= 0 and x_pos < map_data["width"] and y_pos >= 0 and y_pos < map_data["height"]
     if y_pos > map_data["height"]:
         print(True)
     return char_is_wall(formatted_map_list[y_pos][x_pos]) if is_in_bounds else True
@@ -277,17 +277,17 @@ def ascii_map_main():
                     """
                     
                     if check_walls(x_count, y_count, True, True, True, True):
-                        char_to_add  = "╬ "
+                        char_to_add  = "╬═"
                     elif check_walls(x_count, y_count, False, True, True, True):
-                        char_to_add  = "╦ "
+                        char_to_add  = "╦═"
                     elif check_walls(x_count, y_count, True, False, True, True):
-                        char_to_add  = "╩ "
+                        char_to_add  = "╩═"
                     elif check_walls(x_count, y_count, True, True, False, True):
-                        char_to_add  = "╠ "
+                        char_to_add  = "╠═"
                     elif check_walls(x_count, y_count, True, True, True, False):
                         char_to_add  = "╣ "
                     elif check_walls(x_count, y_count, False, False, True, True):
-                        char_to_add  = "═ "
+                        char_to_add  = "══"
                     elif check_walls(x_count, y_count, True, True, False, False):
                         char_to_add  = "║ "
                     """elif char_is_wall(formatted_map_list[y_count-1][x_count]):
