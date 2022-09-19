@@ -222,7 +222,9 @@ y = 0
 def char_is_wall(char):
     return (char == "#" or char == "▓")
 def is_wall(x_pos, y_pos):
-    is_in_bounds = x_pos >= 0 and x_pos < map_data["width"] and y_pos >= 0 and y_pos < map_data["height"]
+    is_in_bounds = x_pos >= 0 and x_pos < map_data["width"]-1 and y_pos >= 0 and y_pos < map_data["height"]
+    if y_pos > map_data["height"]:
+        print(True)
     return char_is_wall(formatted_map_list[y_pos][x_pos]) if is_in_bounds else True
 def get_char_on_map(x_pos, y_pos):
     if x == x_pos and y == y_pos:
