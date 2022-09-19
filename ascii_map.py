@@ -190,7 +190,7 @@ player_char = "@"
 ascii_graphics_data = {
     '&': '&',
     '#': '#',
-    '.': '.',
+    '.': ' ',
 }
 
 map_data = {
@@ -288,30 +288,29 @@ def ascii_map_main():
                         char_to_add  = "╣ "
                     elif check_walls(x_count, y_count, False, False, True, True):
                         char_to_add  = "══"
+                    elif check_walls(x_count, y_count, True, False, False, True):
+                        char_to_add  = "╚═"
+                    elif check_walls(x_count, y_count, False, True, False, True):
+                        char_to_add  = "╔═"
+                    elif check_walls(x_count, y_count, True, False, True, False):
+                        char_to_add  = "╝ "
                     elif check_walls(x_count, y_count, True, True, False, False):
                         char_to_add  = "║ "
-                    """elif char_is_wall(formatted_map_list[y_count-1][x_count]):
-                        ""if connected up""
-                        # if connected left
-                        if char_is_wall(formatted_map_list[y_count][x_count-1]):
-                            char_to_add  = "╝ "
-                        # if connected right
-                        if char_is_wall(formatted_map_list[y_count][x_count+1]):
-                            char_to_add  = "╚ "
-                        # if connected down
-                        if char_is_wall(formatted_map_list[y_count+1][x_count]):
-                            char_to_add  = "║ "
-                    elif char_is_wall(formatted_map_list[y_count-1][x_count]):
-                        ""if connected down""
-                        # if connected left
-                        if char_is_wall(formatted_map_list[y_count][x_count-1]):
-                            char_to_add  = "╗ "
-                        # if connected right
-                        if char_is_wall(formatted_map_list[y_count][x_count+1]):
-                            char_to_add  = "╔ "
-                        # if connected up
-                        if char_is_wall(formatted_map_list[y_count-1][x_count]):
-                            char_to_add  = "║ " """
+                    elif check_walls(x_count, y_count, False, True, True, False):
+                        char_to_add  = "╗ "
+                    elif check_walls(x_count, y_count, False, True, True, False):
+                        char_to_add  = "╗ "
+                    elif check_walls(x_count, y_count, False, True, True, False):
+                        char_to_add  = "╗ "
+                        
+                    elif check_walls(x_count, y_count, True, False, False, False):
+                        char_to_add  = "║ "
+                    elif check_walls(x_count, y_count, False, True, False, False):
+                        char_to_add  = "║ "
+                    elif check_walls(x_count, y_count, False, False, True, False):
+                        char_to_add  = "══"
+                    elif check_walls(x_count, y_count, False, False, False, True):
+                        char_to_add  = "══"
                 formatted_map_str += char_to_add
         # Whitespace right
         # for i in range(map_data["width"]*2, x + math.floor(width2)+1):
